@@ -8,9 +8,9 @@ import { Data } from '@app/Data/Data';
 import { NotFound } from '@app/NotFound/NotFound';
 import { useDocumentTitle } from '@app/utils/useDocumentTitle';
 import { LastLocationProvider, useLastLocation } from 'react-router-last-location';
-import { Test } from './Components/Test';
-import { Sample } from './Components/Sample';
-import { Foo } from './Components/Foo';
+import { Test } from './DataComponents/Test';
+import { Sample } from './DataComponents/Sample';
+import { Foo } from './DataComponents/Foo';
 
 let routeFocusTimer: number;
 
