@@ -4,9 +4,13 @@ import { Alert, PageSection } from '@patternfly/react-core';
 import { DynamicImport } from '@app/DynamicImport';
 import { accessibleRouteChangeHandler } from '@app/utils/utils';
 import { Dashboard } from '@app/Dashboard/Dashboard';
+import { Data } from '@app/Data/Data';
 import { NotFound } from '@app/NotFound/NotFound';
 import { useDocumentTitle } from '@app/utils/useDocumentTitle';
 import { LastLocationProvider, useLastLocation } from 'react-router-last-location';
+import { Test } from './DataComponents/Test';
+import { Sample } from './DataComponents/Sample';
+import { Foo } from './DataComponents/Foo';
 
 let routeFocusTimer: number;
 
@@ -54,15 +58,36 @@ const routes: IAppRoute[] = [
     exact: true,
     label: 'Dashboard',
     path: '/',
-    title: 'PatternFly Seed | Main Dashboard'
+    title: 'Home'
   },
   {
-    component: Support,
+    component: Data,
     exact: true,
     isAsync: true,
-    label: 'Support',
-    path: '/support',
-    title: 'PatternFly Seed | Support Page'
+    label: 'Data',
+    path: '/data',
+    title: 'Data'
+  },
+  {
+    component: Test,
+    exact: true,
+    isAsync: true,
+    path: '/data/test',
+    title: 'Test'
+  },
+  {
+    component: Sample,
+    exact: true,
+    isAsync: true,
+    path: '/data/sample',
+    title: 'Sample'
+  },
+  {
+    component: Foo,
+    exact: true,
+    isAsync: true,
+    path: '/data/foo',
+    title: 'Foo'
   }
 ];
 
