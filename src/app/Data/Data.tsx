@@ -19,7 +19,9 @@ import {
   TextInput,
   PageSection,
   PageSectionVariants,
-  Title
+  TextContent,
+  Text,
+  TextVariants
 } from '@patternfly/react-core';
 
 import {
@@ -56,7 +58,14 @@ const Data = () => {
   return (
     <React.Fragment>
       <PageSection variant={PageSectionVariants.light}>
-        Title
+        <TextContent>
+          <Text component={TextVariants.h1}>
+            Data Virtualizations
+          </Text>
+          <Text component={TextVariants.p}>
+            Syndesis creates and manages data virtualizations to expose as data source connections.
+          </Text>
+        </TextContent>
       </PageSection>
       <PageSection>
         <Card>
