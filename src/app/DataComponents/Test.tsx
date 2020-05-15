@@ -20,18 +20,6 @@ const Test = () => {
 
   console.log('what is the state' + activeNavItem);
 
-  const displayCardData = (activeNavItem) => {
-    if(activeNavItem === 1) {
-      return <p>this is 1</p>
-    }
-    else if(activeNavItem === 2) {
-      return <p>this is 2</p>
-    }
-    else {
-      return <p>this is 0</p>
-    }
-  }
-
   return (
     <React.Fragment>
       <PageSection>
