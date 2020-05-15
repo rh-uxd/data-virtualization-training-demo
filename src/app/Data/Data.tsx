@@ -1,5 +1,13 @@
 import React, {useState} from 'react';
 import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch
+} from 'react-router-dom';
+import { routes } from '@app/routes';
+import { NavLink } from 'react-router-dom';
+import {
   Button,
   Card,
   DataToolbar,
@@ -23,15 +31,11 @@ import {
   Text,
   TextVariants
 } from '@patternfly/react-core';
+import { CubeIcon } from '@patternfly/react-icons';
+import './Data.css';
+import { IconLinkButton } from '../CustomComponents/IconLinkButton';
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from 'react-router-dom';
-import { routes } from '@app/routes';
-import { NavLink } from 'react-router-dom';
+
 
 const Data = () => {
 
@@ -77,10 +81,15 @@ const Data = () => {
               <DataListItemRow>
                 <DataListItemCells
                   dataListCells={[
-                    <DataListCell key="primary content">
-                      <span id="single-action-item1">Single actionable Primary content</span>
+                    <DataListCell isIcon key="icon">
+                      <CubeIcon className="app__button--xl"/>
                     </DataListCell>,
-                    <DataListCell key="secondary content">Single actionable Secondary content</DataListCell>
+                    <DataListCell key="1">
+                      <span id="item-1">Foo</span>
+                    </DataListCell>,
+                    <DataListCell key="2" isFilled={false} alignRight>
+                      <IconLinkButton text="Secured"/>
+                    </DataListCell>
                   ]}
                 />
                   <DataListAction

@@ -1,0 +1,18 @@
+.app__inline-link-button {
+    display: inline-flex;
+    align-items: center;
+}
+
+.app__inline-link-button .pf-c-button.pf-m-link {
+    color: var(--pf-global--disabled-color--100);
+}
+
+.app__inline-link-button .pf-c-button.pf-m-link {
+    margin-left: 8px;
+}
+
+.app__inline-link-button .pf-c-button.pf-m-link:hover,
+.app__inline-link-button .pf-c-button.pf-m-link:active,
+.app__inline-link-button .pf-c-button.pf-m-link:focus {
+    color: var(--pf-global--active-color--300);
+}
