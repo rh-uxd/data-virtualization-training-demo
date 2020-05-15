@@ -9,6 +9,9 @@ import {
 } from '@patternfly/react-core';
 import { DataPermission } from './../DataPermissionComponents/DataPermission';
 import { Views } from './../ViewsComponent/Views';
+import { Metrics } from './../MetricsComponent/Metrics';
+import { Versions } from './../VersionsComponent/Versions';
+import { SQLClient } from './../SQLClientComponent/SQLClient';
 
 const Test = () => {
 
@@ -18,17 +21,21 @@ const Test = () => {
     setActiveNavItem(result.itemId);
   }
 
-  console.log('what is the state' + activeNavItem);
-
   const displayCardData = (activeNavItem) => {
-    if(activeNavItem === 1) {
-      return <p>this is 1</p>
+    if(activeNavItem == 1) {
+      return <SQLClient/>
     }
-    else if(activeNavItem === 2) {
-      return <p>this is 2</p>
+    else if(activeNavItem == 2) {
+      return <Versions/>
+    }
+    else if(activeNavItem == 3) {
+      return <Metrics/>
+    }
+    else if(activeNavItem == 4) {
+      return <DataPermission/>
     }
     else {
-      return <p>this is 0</p>
+      return <Views/>
     }
   }
 
@@ -63,12 +70,7 @@ const Test = () => {
       </PageSection>
       <PageSection>
         <Card>
-          { activeNavItem == 4 ? (
-            <DataPermission/>
-          ) : (
-            <Views/>
-          )
-          }
+          { displayCardData(activeNavItem) }
         </Card>
       </PageSection>
     </React.Fragment>
