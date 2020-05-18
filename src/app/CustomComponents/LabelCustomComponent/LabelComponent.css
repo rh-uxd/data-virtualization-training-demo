@@ -1,0 +1,7 @@
+.app__label-error {
+    background-color: var(--pf-global--danger-color--100) !important;
+}
+
+.app__label-stopped {
+    background-color: var(--pf-global--default-color--100) !important;
+}
