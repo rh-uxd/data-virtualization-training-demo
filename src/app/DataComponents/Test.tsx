@@ -2,19 +2,31 @@ import React, { useState } from 'react';
 import {
   Breadcrumb,
   BreadcrumbItem,
+  Button,
   Card,
+  Divider,
+  Flex,
+  FlexItem,
+  FlexModifiers,
+  Level,
+  LevelItem,
   Nav,
   NavItem,
   NavList,
   NavVariants,
   PageSection,
-  PageSectionVariants
+  PageSectionVariants,
+  Title
 } from '@patternfly/react-core';
+import { routes } from '@app/routes';
 import { DataPermission } from './../DataPermissionComponents/DataPermission';
 import { Views } from './../ViewsComponent/Views';
 import { Metrics } from './../MetricsComponent/Metrics';
 import { Versions } from './../VersionsComponent/Versions';
 import { SQLClient } from './../SQLClientComponent/SQLClient';
+import { LabelComponent } from '../CustomComponents/LabelCustomComponent/LabelComponent';
+import { InlineEdit } from '../CustomComponents/InlineEditComponent/InlineEdit';
+import './Test.css';
 
 const Test = () => {
 
@@ -44,21 +56,46 @@ const Test = () => {
 
   const breadcrumbItems = (
     <Breadcrumb>
-      <BreadcrumbItem to="#">Home</BreadcrumbItem>
-      <BreadcrumbItem to="#">Data</BreadcrumbItem>
-      <BreadcrumbItem to="#" isActive>Test Virtualization</BreadcrumbItem>
+      <BreadcrumbItem to={routes[0].path}>Home</BreadcrumbItem>
+      <BreadcrumbItem to={routes[1].path}>Data</BreadcrumbItem>
+      <BreadcrumbItem isActive>Test Virtualization</BreadcrumbItem>
     </Breadcrumb>
   );
 
   return (
     <React.Fragment>
-      <PageSection variant={PageSectionVariants.light}>
-        { breadcrumbItems }
+      <PageSection variant={PageSectionVariants.light} className="app__page-section-breadcrumb">
+        <Level>
+          <LevelItem>
+            { breadcrumbItems }
+          </LevelItem>
+          <LevelItem>
+            <Button variant="secondary">Publish</Button>
+          </LevelItem>
+        </Level>
       </PageSection>
       <PageSection variant={PageSectionVariants.light}>
-        Test
+        <Flex breakpointMods={[{modifier: FlexModifiers["space-items-md"]}]}>
+          <FlexItem>
+            <Title headingLevel="h1" size={'2xl'}>
+              Test
+            </Title>
+            <InlineEdit text="test"/>
+          </FlexItem>
+          <FlexItem>
+            <Flex breakpointMods={[{modifier: FlexModifiers["space-items-xl"]}]}>
+              <FlexItem>
+                <LabelComponent text="Stopped"/>
+              </FlexItem>
+              <Divider className="pf-m-vertical"/>
+              <FlexItem>
+                <LabelComponent text="Draft" color="grey"/>
+              </FlexItem>
+            </Flex>
+          </FlexItem>
+        </Flex>
       </PageSection>
-      <PageSection variant={PageSectionVariants.light}>
+      <PageSection variant={PageSectionVariants.light} className="app__page-section-nav">
         <Nav onSelect={onSelectNavItem}>
           <NavList variant={NavVariants.tertiary}>
             <NavItem itemId="0" isActive={activeNavItem === 0}>

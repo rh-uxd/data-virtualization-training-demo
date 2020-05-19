@@ -4,14 +4,17 @@ import {
 } from '@patternfly/react-core';
 import './LabelComponent.css';
 
-const LabelComponent = ({ text }) => {
+const LabelComponent = ({ text, ...props}) => {
 
-  function colorFunc(text) {
+  function colorFunc(text, color) {
     if ( text === 'Error') {
       return 'app__label-error'
     }
     else if ( text === 'Stopped') {
       return 'app__label-stopped'
+    }
+    else if ( color === 'grey') {
+      return 'app__label--m-grey'
     }
     else {
       return ''
@@ -19,7 +22,7 @@ const LabelComponent = ({ text }) => {
   }
 
   return (
-    <Label className={ colorFunc(text) }>
+    <Label className={ colorFunc(text, props.color) }>
     { text }
   </Label>
   )

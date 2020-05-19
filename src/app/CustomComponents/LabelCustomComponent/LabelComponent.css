@@ -5,3 +5,8 @@
 .app__label-stopped {
     background-color: var(--pf-global--default-color--100) !important;
 }
+
+.app__label--m-grey {
+    background-color: var(--pf-global--BackgroundColor--200) !important;
+    color: var(--pf-global--Color--100) !important;
+}

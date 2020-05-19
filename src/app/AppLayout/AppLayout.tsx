@@ -66,6 +66,7 @@ const AppLayout: React.FunctionComponent<IAppLayout> = ({children}) => {
       Skip to Content
     </SkipToContent>
   );
+
   return (
     <Page
       mainContainerId="primary-app-container"
