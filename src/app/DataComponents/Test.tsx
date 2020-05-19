@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import {
+  Breadcrumb,
+  BreadcrumbItem,
   Card,
   Nav,
   NavItem,
   NavList,
   NavVariants,
-  PageSection 
+  PageSection,
+  PageSectionVariants
 } from '@patternfly/react-core';
 import { DataPermission } from './../DataPermissionComponents/DataPermission';
 import { Views } from './../ViewsComponent/Views';
@@ -37,17 +40,25 @@ const Test = () => {
     else {
       return <Views/>
     }
-  }
+  };
+
+  const breadcrumbItems = (
+    <Breadcrumb>
+      <BreadcrumbItem to="#">Home</BreadcrumbItem>
+      <BreadcrumbItem to="#">Data</BreadcrumbItem>
+      <BreadcrumbItem to="#" isActive>Test Virtualization</BreadcrumbItem>
+    </Breadcrumb>
+  );
 
   return (
     <React.Fragment>
-      <PageSection>
-        Breadcrumb
+      <PageSection variant={PageSectionVariants.light}>
+        { breadcrumbItems }
       </PageSection>
-      <PageSection>
+      <PageSection variant={PageSectionVariants.light}>
         Test
       </PageSection>
-      <PageSection>
+      <PageSection variant={PageSectionVariants.light}>
         <Nav onSelect={onSelectNavItem}>
           <NavList variant={NavVariants.tertiary}>
             <NavItem itemId="0" isActive={activeNavItem === 0}>

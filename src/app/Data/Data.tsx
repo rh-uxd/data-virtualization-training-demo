@@ -10,9 +10,6 @@ import { NavLink } from 'react-router-dom';
 import {
   Button,
   Card,
-  DataToolbar,
-  DataToolbarItem,
-  DataToolbarContent,
   Dropdown,
   DropdownItem,
   DropdownPosition,
@@ -26,9 +23,6 @@ import {
   DataListItemRow,
   DataListItemCells,
   DataListAction,
-  DataListActionVisibility,
-  InputGroup,
-  TextInput,
   PageSection,
   PageSectionVariants,
   OverflowMenu,
@@ -95,7 +89,7 @@ const Data = () => {
                     <DataListCell key="2" isFilled={false} alignRight>
                       <IconLinkButton text="Secured"/>
                     </DataListCell>,
-                    <DataListCell key="3" isFilled={false} alignRight>
+                    <DataListCell key="3" isFilled={false} alignRight className="app__data-list-cell--m-label">
                       <LabelComponent text="Error"/>
                     </DataListCell>
                   ]}

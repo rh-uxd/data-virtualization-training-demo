@@ -9,10 +9,9 @@ import {
   InputGroup,
   TextInput
 } from '@patternfly/react-core';
-import './Data.css';
 import { SortAlphaDownIcon, FilterIcon } from '@patternfly/react-icons';
 
-const DataDataToolbar = () => {
+const ViewsDataToolbar = () => {
 
   const items = (
     <React.Fragment>
@@ -29,8 +28,8 @@ const DataDataToolbar = () => {
         </Button>
       </DataToolbarItem>
       <DataToolbarGroup variant="button-group">
-        <DataToolbarItem><Button variant="secondary">Import</Button></DataToolbarItem>
-        <DataToolbarItem><Button variant="primary">Create Data Virtualization</Button></DataToolbarItem>
+        <DataToolbarItem><Button variant="secondary">Import Views</Button></DataToolbarItem>
+        <DataToolbarItem><Button variant="primary">Create a View</Button></DataToolbarItem>
       </DataToolbarGroup>
     </React.Fragment>
   );
@@ -45,4 +44,4 @@ const DataDataToolbar = () => {
   );
 }
 
-export {DataDataToolbar};
+export {ViewsDataToolbar};

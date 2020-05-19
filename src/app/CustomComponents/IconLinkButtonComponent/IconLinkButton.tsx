@@ -9,7 +9,7 @@ const IconLinkButton = ({ text }) => (
   <div className="app__inline-link-button">
     <LockIcon/>
     <Button variant="link" isInline>
-      Inline Link Button
+      {text}
     </Button>
   </div>
 );
