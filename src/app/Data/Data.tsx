@@ -1,28 +1,5 @@
 import React, {useState} from 'react';
 import {
-  Button,
-  Card,
-  DataToolbar,
-  DataToolbarItem,
-  DataToolbarContent,
-  Dropdown,
-  DropdownItem,
-  DropdownPosition,
-  KebabToggle,
-  DataList,
-  DataListItem,
-  DataListCell,
-  DataListItemRow,
-  DataListItemCells,
-  DataListAction,
-  InputGroup,
-  TextInput,
-  PageSection,
-  PageSectionVariants,
-  Title
-} from '@patternfly/react-core';
-
-import {
   BrowserRouter as Router,
   Route,
   Link,
@@ -30,48 +7,91 @@ import {
 } from 'react-router-dom';
 import { routes } from '@app/routes';
 import { NavLink } from 'react-router-dom';
+import {
+  Button,
+  Card,
+  Dropdown,
+  DropdownItem,
+  DropdownPosition,
+  Flex,
+  FlexItem,
+  FlexModifiers,
+  KebabToggle,
+  DataList,
+  DataListItem,
+  DataListCell,
+  DataListItemRow,
+  DataListItemCells,
+  DataListAction,
+  PageSection,
+  PageSectionVariants,
+  OverflowMenu,
+  OverflowMenuContent,
+  OverflowMenuGroup,
+  OverflowMenuControl,
+  TextContent,
+  Text,
+  TextVariants
+} from '@patternfly/react-core';
+import { CubeIcon } from '@patternfly/react-icons';
+import './Data.css';
+import { IconLinkButton } from '../CustomComponents/IconLinkButtonComponent/IconLinkButton';
+import { LabelInfo } from '../CustomComponents/LabelInfoComponent/LabelInfo';
+import { LabelComponent } from '../CustomComponents/LabelCustomComponent/LabelComponent';
+import { DataDataToolbar } from './DataDataToolbar';
 
 const Data = () => {
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [toggle1IsOpen, toggle1SetIsOpen] = useState(false);
+  const [toggle2IsOpen, toggle2SetIsOpen] = useState(false);
 
-  const onToggle = (isOpen) => {
-    setIsOpen(isOpen);
+  const onToggle1 = (toggle1IsOpen) => {
+    toggle1SetIsOpen(toggle1IsOpen);
   };
 
-
-  const items = (
-    <React.Fragment>
-      <DataToolbarItem>
-        <InputGroup>
-          <TextInput name="textInput1" id="textInput1" type="search" aria-label="search input example" />
-        </InputGroup>
-      </DataToolbarItem>
-      <DataToolbarItem><Button variant="secondary">Action</Button></DataToolbarItem>
-      <DataToolbarItem variant="separator" />
-      <DataToolbarItem><Button variant="primary">Action</Button></DataToolbarItem>
-    </React.Fragment>
-  );
+  const onToggle2 = (toggle2IsOpen) => {
+    toggle2SetIsOpen(toggle2IsOpen);
+  }
 
   return (
     <React.Fragment>
       <PageSection variant={PageSectionVariants.light}>
-        Title
+        <TextContent>
+          <Flex breakpointMods={[{modifier: FlexModifiers["inline-flex"]}]}>
+            <FlexItem>
+              <Text component={TextVariants.h1}>
+                Data Virtualizations
+              </Text>
+            </FlexItem>
+            <FlexItem>
+              <LabelInfo text="Technology Preview"/>
+            </FlexItem>
+          </Flex>
+          <Text component={TextVariants.p}>
+            Syndesis creates and manages data virtualizations to expose as data source connections.
+          </Text>
+        </TextContent>
       </PageSection>
       <PageSection>
         <Card>
-          <DataToolbar id="app-data-toolbar">
-            <DataToolbarContent>{items}</DataToolbarContent>
-          </DataToolbar>
-          <DataList aria-label="single action data list example ">
+          <DataDataToolbar/>
+          <DataList className="app__data-list" aria-label="">
             <DataListItem aria-labelledby="">
               <DataListItemRow>
                 <DataListItemCells
                   dataListCells={[
-                    <DataListCell key="primary content">
-                      <span id="single-action-item1">Single actionable Primary content</span>
+                    <DataListCell isIcon key="icon">
+                      <CubeIcon className="app__icon--xl"/>
                     </DataListCell>,
-                    <DataListCell key="secondary content">Single actionable Secondary content</DataListCell>
+                    <DataListCell key="1">
+                      <span id="item-1">Foo</span>
+                    </DataListCell>,
+                    <DataListCell key="2" isFilled={false} alignRight>
+                      <IconLinkButton text="Secured"/>
+                    </DataListCell>,
+                    <DataListCell key="3" isFilled={false} alignRight className="app__data-list-cell--m-label">
+                      <LabelComponent text="Error"/>
+                    </DataListCell>
                   ]}
                 />
                   <DataListAction
@@ -79,22 +99,44 @@ const Data = () => {
                     id=""
                     aria-label="Actions"
                   >
-                    <Link to={routes[2].path}>
-                      <Button>
-                        Test
-                      </Button>
-                    </Link>
-                    <Dropdown
-                      isPlain
-                      position={DropdownPosition.right}
-                      isOpen={isOpen}
-                      toggle={<KebabToggle onToggle={onToggle} />}
-                      dropdownItems={[
-                        <DropdownItem key="action" component="button">
-                          Action
-                        </DropdownItem>
-                      ]}
-                    />
+                    <OverflowMenu breakpoint="lg">
+                      <OverflowMenuContent>
+                        <OverflowMenuGroup groupType="button">
+                          <Link to={routes[2].path}>
+                            <Button>
+                              Test
+                            </Button>
+                          </Link>
+                          <Dropdown
+                            isPlain
+                            position={DropdownPosition.right}
+                            isOpen={toggle1IsOpen}
+                            toggle={<KebabToggle onToggle={onToggle1} />}
+                            dropdownItems={[
+                              <DropdownItem key="action" component="button">
+                                Action
+                              </DropdownItem>
+                            ]}
+                          />
+                        </OverflowMenuGroup>
+                      </OverflowMenuContent>
+                      <OverflowMenuControl>
+                        <Dropdown
+                          isPlain
+                          position={DropdownPosition.right}
+                          isOpen={toggle2IsOpen}
+                          toggle={<KebabToggle onToggle={onToggle2} />}
+                          dropdownItems={[
+                            <DropdownItem key="pri-action2" component="button">
+                              Action
+                            </DropdownItem>,
+                            <DropdownItem key="sec-action2" component="button">
+                              Test
+                            </DropdownItem>
+                          ]}
+                        />
+                      </OverflowMenuControl>
+                    </OverflowMenu>
                   </DataListAction>
                 </DataListItemRow>
               </DataListItem>
