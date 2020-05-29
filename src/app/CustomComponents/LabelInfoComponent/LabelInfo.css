@@ -3,6 +3,7 @@
     display: inline-flex;
     align-items: center;
     padding: var(--pf-global--spacer--xs);
+    font-size: var(--pf-global--FontSize--sm);
 }
 
 .app__label-info::after {
